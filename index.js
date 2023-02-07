@@ -62,13 +62,13 @@ async function swapAnlalyze(erc20Addr, _provider){
     let router = getRouter(provider)
     const tx = await router.callStatic.swapTokensForExactETH(
         utils.parseEther(`100000000`),
-        utils.parseEther(`19935071`),
-        [coin.UGD, coin.WBNB],
-        // '0xfd0af3427444d557bf8a9bec1174e07497d0e1ba',
-        '0x84a85B5114368DaB72f5525048E4aF1a8fC7804d',
+        utils.parseUnits(`19935`, 9),
+        [coin.MINISPORTZ, coin.WBNB],
+        '0xfd0af3427444d557bf8a9bec1174e07497d0e1ba',
+        // '0x84a85B5114368DaB72f5525048E4aF1a8fC7804d',
         Date.now() + 1000 * 60 * 5,
         // {from: '0xfd0af3427444d557bf8a9bec1174e07497d0e1ba'}
-        {from: '0x84a85B5114368DaB72f5525048E4aF1a8fC7804d'}
+        {from: '0x61fa26bfb011384f6e3e31d7d1f3f9c579ba39a6'}
     )
 
     log.debug("交易结果：", tx)
@@ -76,6 +76,6 @@ async function swapAnlalyze(erc20Addr, _provider){
 }
 
 const main = async ()=>{
-    await swapAnlalyze(coin.UGD, provider)
+    await swapAnlalyze(coin.MINISPORTZ, provider)
 }
 main()
